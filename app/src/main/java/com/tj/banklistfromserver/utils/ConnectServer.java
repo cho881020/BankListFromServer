@@ -3,6 +3,7 @@ package com.tj.banklistfromserver.utils;
 import android.content.Context;
 import android.util.Log;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -66,6 +67,20 @@ public class ConnectServer {
                 String responseContent = response.body().string();
 
                 Log.d("서버 응답 내용", responseContent);
+
+                try {
+//                    받아온 응답을 JSON 객체로 변환
+                    JSONObject json = new JSONObject(responseContent);
+
+                    if (handler != null) {
+//                        화면에서 처리하는 코드가 있으면 실행시켜줌.
+                        handler.onResponse(json);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
 
             }
         });
