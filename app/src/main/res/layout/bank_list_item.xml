@@ -12,6 +12,7 @@
         android:padding="10dp">
 
         <ImageView
+            android:id="@+id/logoImg"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@mipmap/ic_launcher"/>
